@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_cmd.c                                        :+:      :+:    :+:   */
+/*   cmd1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 13:12:58 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/08/11 18:42:44 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/08/16 12:31:47 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void treat_cmd(s_args *args, char *argv) {
+void treat_cmd1(s_args *args, char *argv) {
+	args->cmd1 = NULL;
 	if (argv == NULL)
 	{
 		perror(CMD_ERROR);

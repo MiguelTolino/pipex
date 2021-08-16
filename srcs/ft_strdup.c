@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 12:32:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/08/16 18:02:59 by mmateo-t         ###   ########.fr       */
+/*   Created: 2019/11/06 19:22:50 by mmateo-t          #+#    #+#             */
+/*   Updated: 2021/08/16 18:23:59 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int argc, char *argv[]) {
+char	*ft_strdup(const char *s1)
+{
+	char	*s2;
+	int		i;
+	int		size;
 
-	struct s_args args;
-	int n_arg;
-
-	n_arg = 1;
-	check_nargs(argc);
-	while (n_arg < argc)
+	size = ft_strlen(s1);
+	i = 0;
+	s2 = (char*)malloc(sizeof(char) * size + 1);
+	if (s2 == NULL)
 	{
-		if (n_arg == 1)
-			treat_file1(&args, argv[n_arg]);
-	/*	else if (n_arg == 2)
-			treat_cmd1(&args, argv[n_arg]);
-		else if (n_arg == 3)
-			treat_cmd2(&args, argv[n_arg]);
-		else if (n_arg == 4)
-			treat_file2(&args, argv[n_arg]);
-	*/	n_arg++;
+		return (s2);
 	}
-	return (0);
+	while (i <= size)
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	return (s2);
 }

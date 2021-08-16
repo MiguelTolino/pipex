@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/08/16 19:56:38 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/08/16 19:33:47 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(%.o): $(%.c)
 		@echo "Creating objects"
 
 debug: $(OBJS)
-	$(CC) $(DEBUG_FLAG) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(DEBUG_FLAG) -I/home/miguel/42Cursus/pipex/srcs/pipex
 
 #build:
 #		mkdir -pv build
@@ -74,3 +74,9 @@ re:
 
 
 .PHONY: clean fclean all re objects debug bonus
+e1 \e[95m cmd1 | cmd2 \e[94m > file2"
+		@echo  "\e[42m                                                                        \e[0m"
+
+re:
+	make fclean all
+	@echo "A

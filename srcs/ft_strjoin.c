@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 12:32:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/08/16 18:02:59 by mmateo-t         ###   ########.fr       */
+/*   Created: 2019/11/08 16:02:52 by mmateo-t          #+#    #+#             */
+/*   Updated: 2021/08/16 18:23:52 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int argc, char *argv[]) {
+char		*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*strjoin;
 
-	struct s_args args;
-	int n_arg;
-
-	n_arg = 1;
-	check_nargs(argc);
-	while (n_arg < argc)
+	if (!s1 || !s2)
+		return (NULL);
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
+	strjoin = (char*)malloc(sizeof(char) * (i + j + 1));
+	if (strjoin == NULL)
+		return (strjoin);
+	i = 0;
+	j = 0;
+	while (s1[i])
 	{
-		if (n_arg == 1)
-			treat_file1(&args, argv[n_arg]);
-	/*	else if (n_arg == 2)
-			treat_cmd1(&args, argv[n_arg]);
-		else if (n_arg == 3)
-			treat_cmd2(&args, argv[n_arg]);
-		else if (n_arg == 4)
-			treat_file2(&args, argv[n_arg]);
-	*/	n_arg++;
+		strjoin[i] = s1[i];
+		i++;
 	}
-	return (0);
+	while (s2[j])
+	{
+		strjoin[i + j] = s2[j];
+		j++;
+	}
+	strjoin[i + j] = '\0';
+	return (strjoin);
 }
