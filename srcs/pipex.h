@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:33:02 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/08/16 18:28:10 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/08/17 10:46:29 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s1);
 char		*ft_strjoin(char const *s1, char const *s2);
+void	ft_bzero(void *s, size_t n);
 
 #endif

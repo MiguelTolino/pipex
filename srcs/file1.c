@@ -6,12 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 13:12:23 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/08/16 18:57:14 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/08/17 10:49:45 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <string.h>
+#define BUFF_SIZE 256
 
 int open_file(char *argv)
 {
@@ -33,18 +34,15 @@ void read_file(s_args *args)
 	ssize_t bytes;
 
 	args->file1 = ft_strdup("");
-	aux = ft_strdup("");
-	buff = (char *)malloc(sizeof(char) * 256);
-	while ((bytes = read(args->fd_in, buff, 256)) >= 0)
+	buff = (char *)malloc(sizeof(char) * BUFF_SIZE);
+	while ((bytes = read(args->fd_in, buff, BUFF_SIZE)) > 0)
 	{
-		if (bytes == 0)
-			break;
 		aux = ft_strjoin(args->file1, buff);
 		free(args->file1);
 		args->file1 = aux;
+		ft_bzero(buff, BUFF_SIZE);
 	}
 	free(buff);
-	printf("%s", args->file1);
 }
 
 void treat_file1(s_args *args, char *argv)
