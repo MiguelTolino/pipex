@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 13:12:23 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/08/17 10:49:45 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/08/17 12:05:37 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int open_file(char *argv)
 
 	fd = open(argv, O_RDWR);
 	if (fd < 0)
-	{
-		perror(FILE_ERROR);
-		exit(1);
-	}
+		throw_error(FILE_ERROR);
 	return (fd);
 }
 

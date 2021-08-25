@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 12:32:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/08/25 18:01:58 by mmateo-t         ###   ########.fr       */
+/*   Created: 2019/11/08 15:54:55 by mmateo-t          #+#    #+#             */
+/*   Updated: 2021/08/25 14:06:26 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main(int argc, char *argv[]) {
+char		*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*substr;
 
-	struct s_args args;
-
-	check_errors(argc, argv, &args);
-	
-	return (0);
+	i = 0;
+	if (!s)
+	{
+		return (NULL);
+	}
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	substr = (char*)malloc(sizeof(char) * (len + 1));
+	if (substr == NULL)
+		return (substr);
+	while (s[i] && i < len)
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[i] = '\0';
+	return (substr);
 }
