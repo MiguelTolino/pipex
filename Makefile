@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/08/16 19:56:38 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/08/26 12:52:23 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ clean:
 		$(RM) $(OBJS)
 fclean:
 		make clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) ./*.txt
 msg:
 		@echo  "\e[42m                                                                        \e[0m"
 		@echo  "\e[92mAll files compiled"

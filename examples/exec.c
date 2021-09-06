@@ -3,7 +3,7 @@
 
 int main() {
 
-    char *argv[] = { "/bin/ls", "-l", 0, 0 };
+    char *argv[] = { "/bin/ls", "-l", 0};
     execve("/bin/ls", argv, 0);
 	printf("Esto es una prueba para ver si el programa continua");
 	return(0);
