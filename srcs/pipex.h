@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:33:02 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/09/06 12:41:04 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/09/06 14:01:19 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,15 @@ typedef struct s_args
 	char *file2;
 } s_args;
 
+
+int double_free(char **array);
 void check_errors(int argc, char **argv, s_args *args);
 int open_file_in(char *argv);
 int open_file_out(char *argv);
-void treat_file1(s_args *args, char *argv);
 void throw_error(const char *error);
-size_t ft_strlcat(char *dest, const char *src, size_t size);
 size_t ft_strlen(const char *str);
 char *ft_strdup(const char *s1);
 char *ft_strjoin(char const *s1, char const *s2);
-void ft_bzero(void *s, size_t n);
 char **ft_split(char const *s, char c);
 char *ft_substr(char const *s, unsigned int start, size_t len);
 

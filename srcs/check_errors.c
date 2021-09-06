@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:07:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/09/06 12:15:34 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/09/06 14:15:24 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void save_cmds(char *cmd1, char *cmd2, s_args *args)
 	args->cmd1 = ft_split(cmd1, ' ');
 	args->cmd2 = ft_split(cmd2, ' ');
 }
+
 void check_permissions(char *cmd1, char *cmd2, s_args *args)
 {
 	char **split;
@@ -47,18 +48,24 @@ void check_permissions(char *cmd1, char *cmd2, s_args *args)
 
 		if (!(access(cmd[0], X_OK)))
 		{
+			free(args->cmd1[0]);
 			args->cmd1[0] = ft_strdup(cmd[0]);
 			bool[0] = 1;
 		}
 		if (!(access(cmd[1], X_OK)))
 		{
+			free(args->cmd2[0]);
 			args->cmd2[0] = ft_strdup(cmd[1]);
 			bool[1] = 1;
 		}
+		free(cmd[0]);
+		free(cmd[1]);
 		split++;
 	}
 	if (!bool[0] || !bool[1])
 		throw_error(CMD_ERROR1);
+
+	double_free(split);
 }
 
 void check_errors(int argc, char **argv, s_args *args)
