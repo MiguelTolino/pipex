@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 13:59:06 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/09/06 14:28:40 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:10:23 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 int double_free(char **array)
 {
-	while (*array)
+	int i;
+
+	i = 0;
+	while (array[i])
 	{
-		free(*array);
-		array++;
+		free(array[i]);
+		i++;
 	}
-	//free(array);
+	free(array);
 	return (0);
 }

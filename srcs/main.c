@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:32:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/09/06 14:03:20 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:11:18 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
 		throw_error("Error en fork");
 	wait(&status);
 	wait(&status);
-	close(args.fd_in);
-	close(args.fd_out);
+	//close(args.fd_in);
+	//close(args.fd_out);
 	double_free(args.cmd1);
 	double_free(args.cmd2);
 	return (0);

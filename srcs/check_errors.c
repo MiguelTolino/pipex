@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:07:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/09/06 14:15:24 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:08:49 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,39 @@ void save_cmds(char *cmd1, char *cmd2, s_args *args)
 
 void check_permissions(char *cmd1, char *cmd2, s_args *args)
 {
-	char **split;
+	int i;
 	char *cmd[2];
 	int bool[2];
 
+	i = 0;
 	bool[0] = 0;
 	bool[1] = 0;
-	split = ft_split(CMD_PATH, ':');
+	args->paths = ft_split(CMD_PATH, ':');
 	save_cmds(cmd1, cmd2, args);
 
-	while (*split)
+	while (args->paths[i])
 	{
-		cmd[0] = ft_strjoin(*split, args->cmd1[0]);
-		cmd[1] = ft_strjoin(*split, args->cmd2[0]);
-
+		cmd[0] = ft_strjoin(args->paths[i], args->cmd1[0]);
+		cmd[1] = ft_strjoin(args->paths[i], args->cmd2[0]);
 		if (!(access(cmd[0], X_OK)))
 		{
 			free(args->cmd1[0]);
 			args->cmd1[0] = ft_strdup(cmd[0]);
 			bool[0] = 1;
 		}
+		free(cmd[0]);
 		if (!(access(cmd[1], X_OK)))
 		{
 			free(args->cmd2[0]);
 			args->cmd2[0] = ft_strdup(cmd[1]);
 			bool[1] = 1;
 		}
-		free(cmd[0]);
 		free(cmd[1]);
-		split++;
+		i++;
 	}
 	if (!bool[0] || !bool[1])
 		throw_error(CMD_ERROR1);
-
-	double_free(split);
+	double_free(args->paths);
 }
 
 void check_errors(int argc, char **argv, s_args *args)

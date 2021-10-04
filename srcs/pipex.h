@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:33:02 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/09/06 14:01:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:04:01 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,11 @@
 
 typedef struct s_args
 {
-	char *buffer;
 	int fd_in;
 	int fd_out;
 	char **cmd1;
 	char **cmd2;
-	char *file1;
-	char *file2;
+	char **paths;
 } s_args;
 
 
