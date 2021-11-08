@@ -3,45 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:07:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/04 12:08:49 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 23:07:27 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void throw_error(const char *error)
+void	throw_error(const char *error)
 {
 	perror(error);
 	exit(0);
 }
 
-void check_nargs(int argc)
+void	check_nargs(int argc)
 {
 	if (argc != NUM_ARGS)
 		throw_error(ERROR_ARGS);
 }
 
-void save_cmds(char *cmd1, char *cmd2, s_args *args)
+void	save_cmds(char *cmd1, char *cmd2, s_args *args)
 {
 	args->cmd1 = ft_split(cmd1, ' ');
 	args->cmd2 = ft_split(cmd2, ' ');
 }
 
-void check_permissions(char *cmd1, char *cmd2, s_args *args)
+void	check_permissions(char *cmd1, char *cmd2, s_args *args)
 {
-	int i;
-	char *cmd[2];
-	int bool[2];
+	int		i;
+	char	*cmd[2];
+	int		bool[2];
 
 	i = 0;
 	bool[0] = 0;
 	bool[1] = 0;
 	args->paths = ft_split(CMD_PATH, ':');
 	save_cmds(cmd1, cmd2, args);
-
 	while (args->paths[i])
 	{
 		cmd[0] = ft_strjoin(args->paths[i], args->cmd1[0]);
@@ -67,7 +66,7 @@ void check_permissions(char *cmd1, char *cmd2, s_args *args)
 	double_free(args->paths);
 }
 
-void check_errors(int argc, char **argv, s_args *args)
+void	check_errors(int argc, char **argv, s_args *args)
 {
 	check_nargs(argc);
 	check_permissions(argv[2], argv[3], args);

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 13:59:06 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/04 12:10:23 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 23:07:35 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int double_free(char **array)
+int	double_free(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
