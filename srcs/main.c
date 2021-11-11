@@ -6,19 +6,20 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:32:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 23:14:31 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:49:40 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char *argv[])
+int	main(int argc, char *argv[], char *envp[])
 {
 	struct t_args	args;
 	int				fd[2];
 	int				pid;
 	int				status;
 
+	args.paths = envp;
 	check_errors(argc, argv, &args);
 	args.fd_in = open_file_in(argv[1]);
 	if (pipe(fd) < 0)

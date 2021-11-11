@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+         #
+#    By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/08/26 12:52:23 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/11/11 00:20:25 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJS := $(SRCS:%.c=%.o)
 #BUILD_OBJS:= $(BUILD_DIR)*.o
 #OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)
 NAME:= pipex
-CC:= gcc
+CC:= cc
 CFLAGS:= -Wall -Werror -Wextra
 RM :=	rm -rvf
 DEBUG_FLAG:= -g

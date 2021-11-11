@@ -6,16 +6,36 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 18:07:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 23:07:27 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:53:37 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+char	*search_paths(char **envp)
+{
+	int i;
+	char *paths;
+
+	i = 0;
+	
+	while (envp[i])
+	{
+		paths = ft_strnstr
+		if (/* condition */)
+		{
+			/* code */
+		}
+		
+		
+	}
+	
+}
+
 void	throw_error(const char *error)
 {
 	perror(error);
-	exit(0);
+	exit(1);
 }
 
 void	check_nargs(int argc)
@@ -24,13 +44,13 @@ void	check_nargs(int argc)
 		throw_error(ERROR_ARGS);
 }
 
-void	save_cmds(char *cmd1, char *cmd2, s_args *args)
+void	save_cmds(char *cmd1, char *cmd2, t_args *args)
 {
 	args->cmd1 = ft_split(cmd1, ' ');
 	args->cmd2 = ft_split(cmd2, ' ');
 }
 
-void	check_permissions(char *cmd1, char *cmd2, s_args *args)
+void	check_permissions(char *cmd1, char *cmd2, t_args *args)
 {
 	int		i;
 	char	*cmd[2];
@@ -66,7 +86,7 @@ void	check_permissions(char *cmd1, char *cmd2, s_args *args)
 	double_free(args->paths);
 }
 
-void	check_errors(int argc, char **argv, s_args *args)
+void	check_errors(int argc, char **argv, t_args *args)
 {
 	check_nargs(argc);
 	check_permissions(argv[2], argv[3], args);

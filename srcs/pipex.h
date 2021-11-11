@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:33:02 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 23:13:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:49:02 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <sys/wait.h>
 
 # define NUM_ARGS 5
-# define CMD_PATH "/usr/local/sbin/:/usr/local/bin/:/usr/sbin/ \
-:/usr/bin/:/sbin/:/bin/"
 # define READ_END 0
 # define WRITE_END 1
 
@@ -42,7 +40,7 @@ typedef struct t_args
 }		t_args;
 
 int		double_free(char **array);
-void	check_errors(int argc, char **argv, s_args *args);
+void	check_errors(int argc, char **argv, t_args *args);
 int		open_file_in(char *argv);
 int		open_file_out(char *argv);
 void	throw_error(const char *error);
