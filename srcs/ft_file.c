@@ -6,11 +6,12 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 13:12:23 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/12 13:18:09 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:09:45 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <errno.h>
 
 int	open_file_in(char *argv)
 {
@@ -18,7 +19,7 @@ int	open_file_in(char *argv)
 
 	fd = open(argv, O_RDWR);
 	if (fd < 0)
-		throw_error(FILE_ERROR);
+		perror(strerror(errno));
 	return (fd);
 }
 

@@ -6,13 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 12:32:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/12 13:50:52 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/12 15:20:05 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-// ./pipex < file1 cmd1 cmd2 file2
 
 void	child_process(int *fd, t_args *args, char **envp)
 {
@@ -71,7 +69,7 @@ int	main(int argc, char *argv[], char *envp[])
 		parent_process(fd, pid, &args, envp);
 	}
 	else
-		throw_error("Error en fork");
+		throw_error("Fork Error");
 	wait(&status);
 	wait(&status);
 	double_free(args.cmd1);
