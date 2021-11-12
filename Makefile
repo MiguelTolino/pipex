@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/11/11 00:20:25 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/11/12 13:50:16 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,47 +18,34 @@
 #make fclean		#remove all binaries and executable
 
 SRCS_DIR:=srcs/
-#BUILD_DIR:=build/
-
-#SRCS_DIR_BONUS:= files/srcs/bonus/
-
 SRCS := $(wildcard $(SRCS_DIR)*.c)
-
-#SRCS_BONUS :=	$(wildcard $(SRCS_DIR_BONUS)*.c) \
-
 OBJS := $(SRCS:%.c=%.o)
-#BUILD_OBJS:= $(BUILD_DIR)*.o
-#OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)
 NAME:= pipex
 CC:= cc
 CFLAGS:= -Wall -Werror -Wextra
 RM :=	rm -rvf
+LIBFT_PATH:= lib/libft
+LIBFT_LIB:= -L$(LIBFT_PATH) $(LIBFT_PATH)/libft.a
 DEBUG_FLAG:= -g
 
-all:	$(NAME) msg
+all:	libft $(NAME) msg
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
-#bonus: $(OBJS_BONUS)
-#	$(CC) $(OBJS_BONUS) -o $(NAME) $(CFLAGS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT_LIB)
 
 $(%.o): $(%.c)
 		$(CC) -c $^ -o $@
 		@echo "Creating objects"
 
-debug: $(OBJS)
-	$(CC) $(DEBUG_FLAG) $(CFLAGS) $(OBJS) -o $(NAME)
-
-#build:
-#		mkdir -pv build
-#		mv $(SRCS_DIR)*.o $(BUILD_DIR)
+libft:
+		make -C $(LIBFT_PATH)
 
 clean:
 		@echo "Removing objects"
 		$(RM) $(OBJS)
 fclean:
 		make clean
+		cd ./lib/libft && $(MAKE) fclean
 		$(RM) $(NAME) ./*.txt
 msg:
 		@echo  "\e[42m                                                                        \e[0m"

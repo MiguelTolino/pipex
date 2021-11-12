@@ -1,34 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 19:22:50 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 23:08:54 by mmateo-t         ###   ########.fr       */
+/*   Created: 2021/11/11 14:05:58 by mmateo-t          #+#    #+#             */
+/*   Updated: 2021/11/12 12:08:40 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_strdup(const char *s1)
+void	put_slash(char **paths)
 {
-	char	*s2;
 	int		i;
-	int		size;
+	char	*aux;
 
-	size = ft_strlen(s1);
 	i = 0;
-	s2 = (char *)malloc(sizeof(char) * size + 1);
-	if (s2 == NULL)
+	while (paths[i])
 	{
-		return (s2);
-	}
-	while (i <= size)
-	{
-		s2[i] = s1[i];
+		aux = ft_strjoin(paths[i], "/");
+		free(paths[i]);
+		paths[i] = aux;
 		i++;
 	}
-	return (s2);
+}
+
+char	**search_paths(char **envp)
+{
+	int		i;
+	char	**paths;
+	char	*aux;
+
+	i = 0;
+	while (envp[i])
+	{
+		aux = ft_strnstr(envp[i], "PATH", ft_strlen("PATH"));
+		if (aux)
+		{
+			aux = ft_strchr(aux, '=');
+			aux++;
+			paths = ft_split(aux, ':');
+			put_slash(paths);
+			return (paths);
+		}
+		i++;
+	}
+	return (NULL);
 }
