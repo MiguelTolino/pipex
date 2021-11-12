@@ -1,8 +1,8 @@
-# pipex
+# 🚽 pipex
 
 This project aims to make you understand a bit deeper two concets, the redirections and the pipes.
  
-## Usage
+## ✍️ Usage
 
 `$> ./pipex file1 cmd1 cmd2 file2`
 
@@ -13,7 +13,7 @@ The execution of the pipex program should do the same as the next shell command:
 
 `$> < file1 cmd1 | cmd2 > file2`
 
-## Examples
+## ⏏️ Examples
 
 `$> ./pipex infile ``ls -l'' ``wc -l'' outfile`
 
